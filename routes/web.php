@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// header('Access-Control-Allow-Origin:  *');
+// header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
+// header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/users', [UsersController::class, 'index']);
+// Route::get('api/users', [UsersController::class, 'index']);
+
+Route::get('api/hello', function () {
+    return response()->json([
+        'data' => 1,
+        'success' => 1,
+
+    ], 200);
 });
